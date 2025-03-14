@@ -1,14 +1,16 @@
 def total_salary(path):
   try: 
     with open(path, 'r', encoding='utf-8') as fh:
-      total_sum = 0
+      total = 0
       num_of_employees = 0;
 
       for line in fh:
-        total_sum += int(line.strip().split(',')[1])
+        total += int(line.strip().split(',')[1])
         num_of_employees += 1
     
-      return(f"Загальна сума заробітної плати: {total_sum}, Середня заробітна плата: {total_sum//num_of_employees}")
+      average = total//num_of_employees
+      return(total, average)
+      # return(f"Загальна сума заробітної плати: {total}, Середня заробітна плата: {total//num_of_employees}")
     
   except ZeroDivisionError as error :
     print('Переданий файл пустий!')
@@ -21,8 +23,13 @@ def total_salary(path):
     return(error)
 
 
+# path = 'task_1\\salary.txt' #relative
+total, average = total_salary("task_1\\salary.txt")
 
-# path = 'D:\PROJECTS\NEOVERSITY\goit-pycore-hw-04\task_1\salary.txt' #absolute
-path = 'task_1\\salary.txt' #relative
+# print(total_salary(path))
+print(f"Загальна сума заробітної плати: {total}, Середня заробітна плата: {average}")
 
-print(total_salary(path))
+#you can swap all uncommented lines for commented => will still work 
+
+#because uncommented lines cause 2 errors - one from try...except block
+#Other one will be TypeError  
