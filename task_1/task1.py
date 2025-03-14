@@ -5,8 +5,13 @@ def total_salary(path):
       num_of_employees = 0;
 
       for line in fh:
-        total += int(line.strip().split(',')[1])
-        num_of_employees += 1
+        try:
+          _, salary = line.strip().split(',')
+          total += int(salary)
+          num_of_employees += 1
+        except ValueError as error:
+          print(f'Невірний формат рядка: {line.strip()}')
+          return(error)
     
       average = total//num_of_employees
       return(total, average)
