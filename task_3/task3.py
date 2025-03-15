@@ -1,7 +1,8 @@
-from colorama import Fore, Back, Style
+from colorama import Fore, Style, init
 import sys
 from pathlib import Path
 
+init()
 
 def create_mock(directory_path, indent_lvl = 0):
   try:
@@ -21,8 +22,8 @@ def main():
     print(f'{Fore.LIGHTRED_EX}{Style.BRIGHT}Використання: python task3.py /шлях/до/директорії{Style.RESET_ALL}')
     sys.exit(1)
 
-  directory_path = Path(f'/{sys.argv[1]}') if not sys.argv[1].startswith('\\') and not Path(sys.argv[1]).is_absolute() else Path(sys.argv[1]) #will work correctly if input is "dir\dir"
-  # directory_path = Path(f'/{sys.argv[1]}') if not Path(sys.argv[1]).resolve() else Path(sys.argv[1]).resolve() #will not work correctly if input is "dir\dir" 
+
+  directory_path = Path(f'/{sys.argv[1]}') if not sys.argv[1].startswith('\\') else Path(sys.argv[1]).resolve() #will work correctly if input is "dir\dir"
 
   if not directory_path.exists():
     print(f'{Fore.RED}{Style.BRIGHT}Даний шлях не існує!{Style.RESET_ALL}')
@@ -32,7 +33,7 @@ def main():
     print(f'{Fore.YELLOW}{Style.BRIGHT}Даний шлях веде до файлу {directory_path.name}{Style.RESET_ALL}')
     sys.exit(1)
   
-  # if not directory_path.is_dir():
+  # if not directory_path.is_dir():  #if do not want to display filename if path was for it
   #   print(f'{Fore.RED}{Style.BRIGHT}Даний шлях не є директорією!{Style.RESET_ALL}')
   #   sys.exit(1)
 
