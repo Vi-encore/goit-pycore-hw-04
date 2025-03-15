@@ -8,6 +8,7 @@ def create_mock(directory_path, indent_lvl = 0):
   try:
     for path in directory_path.iterdir():
       indent = ' ' * 4 * indent_lvl
+
       if Path(path).is_dir():
         print(f'{Fore.BLUE}{indent}{Path(path).name}/{Style.RESET_ALL}')
         create_mock(Path(path), indent_lvl + 1)
@@ -30,6 +31,10 @@ def main():
 
   if directory_path.is_file():
     print(f'{Fore.YELLOW}Даний шлях веде до файлу {Style.BRIGHT}{directory_path.name}{Style.RESET_ALL}')
+    sys.exit(1)
+
+  if next(directory_path.iterdir(), None) is None:
+    print(f'{Fore.YELLOW}Даний шлях веде до пустої директорії {Style.BRIGHT}{directory_path.name}{Style.RESET_ALL}')
     sys.exit(1)
   
   # if not directory_path.is_dir():  #if do not want to display filename if path was for it
