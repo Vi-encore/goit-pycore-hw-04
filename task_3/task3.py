@@ -22,7 +22,6 @@ def main():
     print(f'{Fore.LIGHTRED_EX}{Style.BRIGHT}Використання: python task3.py /шлях/до/директорії{Style.RESET_ALL}')
     sys.exit(1)
 
-
   directory_path = Path(f'/{sys.argv[1]}') if not sys.argv[1].startswith('\\') else Path(sys.argv[1]).resolve() #will work correctly if input is "dir\dir"
 
   if not directory_path.exists():
