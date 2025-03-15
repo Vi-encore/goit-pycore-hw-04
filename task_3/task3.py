@@ -6,10 +6,6 @@ init()
 
 def create_mock(directory_path, indent_lvl = 0):
   try:
-    if next(directory_path.iterdir(), None) == None:
-      print(f'{Fore.YELLOW}Даний шлях веде до пустої директорії {Style.BRIGHT}{directory_path.name}!{Style.RESET_ALL}')
-      sys.exit(1)
-
     for path in directory_path.iterdir():
       indent = ' ' * 4 * indent_lvl
       if Path(path).is_dir():
