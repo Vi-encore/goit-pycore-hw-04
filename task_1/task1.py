@@ -27,10 +27,12 @@ def total_salary(path):
     return(error)
 
 
-# path = 'task_1\\salary.txt' #relative
+# path = 'task_1\\salary.txt' #relative if runs from main dir
+path = 'salary.txt' #relative if runs from task1 dir
+
 # print(total_salary(path))
 
-total, average = total_salary("task_1\\salary.txt")
+total, average = total_salary(path)
 print(f"Загальна сума заробітної плати: {total}, Середня заробітна плата: {average}")
 
 

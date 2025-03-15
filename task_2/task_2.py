@@ -18,7 +18,8 @@ def get_cats_info(path):
     print('Помилка читання файлу!')
     return(error)
 
-path = 'task_2\\cat_info.txt' #relative
+# path = 'task_2\\cat_info.txt' #relative if runs from main dir
+path = 'cat_info.txt' #if runs from task2 dir
 
 cats_info = get_cats_info(path)
 print(cats_info)
