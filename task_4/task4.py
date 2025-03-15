@@ -5,14 +5,16 @@ def parse_input(user_input):
     return cmd, *args
 
 def add_contact(args, contacts):
-    if len(args) != 2:
+    try:
+        name, phone = args
+        if name in contacts:
+            return f'Name {name} already exists in contacts!'
+        
+        contacts[name] = phone
+        return "Contact added."
+    except ValueError:
         return "Invalid command format. Use: add [name] [phone]"
     
-    name, phone = args
-    if name in contacts:
-        return f'Name {name} already exists in contacts!'
-    contacts[name] = phone
-    return "Contact added."
 
 def show_all(contacts):
     if len(contacts) == 0:
@@ -24,31 +26,33 @@ def show_all(contacts):
     return '\n'.join(result)
 
 def change_contact(args, contacts):
-        if len(args) != 2:
+        try:
+            name, phone = args
+            if name not in contacts:
+                return f'There are no contacts with name {name}'
+            
+            contacts[name] = phone
+            return 'Contact changed.'
+        except ValueError:
             return "Invalid command format. Use: add [name] [new phone]"
-
-        name, phone = args
-        if name not in contacts:
-            return f'There are no contacts with name {name}'
-        
-        contacts[name] = phone
-        return 'Contact changed.'
     
 
 def phone_user(args, contacts):
-    if len(args) != 1:
+    try:
+        name = args[0]
+        if name not in contacts:
+            return f'There are no contacts with name {name}'
+        
+        return contacts[name]
+    except IndexError:
         return "Invalid command format. Use: phone [name]"
-    
-    name = args[0]
-    if name not in contacts:
-        return f'There are no contacts with name {name}'
-    
-    return contacts[name]
+
 
 
 def main():
-    contacts = {'Vi': 345,
-                'Dsa': 45346}
+    contacts = {}
+    # contacts = {'Vi': 345,
+    #             'Dsa': 45346}
     # contacts = {'Vi': 4535,}
     print("Welcome to the assistant bot!")
 
