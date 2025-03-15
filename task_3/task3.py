@@ -2,10 +2,6 @@ from colorama import Fore, Back, Style
 import sys
 from pathlib import Path
 
-# print(Fore.RED + 'Це червоний текст')
-# print(Back.GREEN + 'Це текст на зеленому фоні')
-# print(Style.RESET_ALL)
-# print('Це звичайний текст після скидання стилю')
 
 def create_mock(directory_path, indent_lvl = 0):
   indent = ' ' * 4 * indent_lvl
