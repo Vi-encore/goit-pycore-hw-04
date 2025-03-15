@@ -9,6 +9,8 @@ def add_contact(args, contacts):
         return "Invalid command format. Use: add [name] [phone]"
     
     name, phone = args
+    if name in contacts:
+        return f'Name {name} already exists in contacts!'
     contacts[name] = phone
     return "Contact added."
 
