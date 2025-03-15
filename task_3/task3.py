@@ -34,7 +34,7 @@ def main():
     sys.exit(1)
 
   if next(directory_path.iterdir(), None) is None:
-    print(f'{Fore.YELLOW}Даний шлях веде до пустої директорії {Style.BRIGHT}{directory_path.name}{Style.RESET_ALL}')
+    print(f'{Fore.YELLOW}Даний шлях веде до {Style.BRIGHT}пустої{Style.NORMAL} директорії {Style.BRIGHT}{directory_path.name}{Style.RESET_ALL}')
     sys.exit(1)
   
   # if not directory_path.is_dir():  #if do not want to display filename if path was for it
